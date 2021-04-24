@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!characterController.isGrounded)
         {
-            characterController.Move(transform.up * gravity);
+            characterController.Move(transform.up * gravity * Time.deltaTime);
         }
     }
 

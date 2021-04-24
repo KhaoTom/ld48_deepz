@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5404901424050590092}
   m_Layer: 0
-  m_Name: PillarOutcrop
+  m_Name: PillarOutcropBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.28
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

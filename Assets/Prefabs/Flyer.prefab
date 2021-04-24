@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1484312839298829111}
   - component: {fileID: 43133576299086710}
   - component: {fileID: 810994723090490827}
-  - component: {fileID: 3006209053532466630}
   m_Layer: 0
   m_Name: FlyerWingLeft
   m_TagString: Untagged
@@ -299,20 +298,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908271162673655355}
   m_Mesh: {fileID: 0}
---- !u!64 &3006209053532466630
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908271162673655355}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &4522208864063303892
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +310,6 @@ GameObject:
   - component: {fileID: 5096259190914129832}
   - component: {fileID: 6796006313967840873}
   - component: {fileID: 5876051745160692907}
-  - component: {fileID: 2598565676688992633}
   m_Layer: 0
   m_Name: FlyerHead
   m_TagString: Untagged
@@ -1154,20 +1138,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4522208864063303892}
   m_Mesh: {fileID: 0}
---- !u!64 &2598565676688992633
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4522208864063303892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &5982091855571543891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1268,7 @@ MonoBehaviour:
   pathParent: {fileID: 0}
   moveSpeed: 3
   nodes: []
+  currentTargetId: -1
 --- !u!95 &4696880692318474312
 Animator:
   serializedVersion: 3
@@ -1329,7 +1300,6 @@ GameObject:
   - component: {fileID: 1983358666248614620}
   - component: {fileID: 4524441523231225363}
   - component: {fileID: 3343745809095933466}
-  - component: {fileID: 2064193453119506795}
   m_Layer: 0
   m_Name: FlyerWingRight
   m_TagString: Untagged
@@ -1615,18 +1585,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7405369321880199431}
-  m_Mesh: {fileID: 0}
---- !u!64 &2064193453119506795
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7405369321880199431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}

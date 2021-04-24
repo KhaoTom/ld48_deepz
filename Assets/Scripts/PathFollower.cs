@@ -6,9 +6,9 @@ public class PathFollower : MonoBehaviour
 {
     public GameObject pathParent;
     public float moveSpeed = 3;
-
+    public float rotationSpeed = 180;
     public Transform[] nodes;
-    private int currentTargetId = -1;
+    public int currentTargetId = -1;
 
     private void Start()
     {
@@ -46,8 +46,15 @@ public class PathFollower : MonoBehaviour
 
     private void Update()
     {
+        Vector3 target = nodes[currentTargetId].position;
+
         // move towards current target node
-        transform.position = Vector3.MoveTowards(transform.position, nodes[currentTargetId].position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+
+        // rotate towards target node
+        
+        var lookat = Quaternion.LookRotation(target - transform.position);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookat, rotationSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

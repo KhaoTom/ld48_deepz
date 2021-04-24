@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private MeshRenderer capsuleMeshRenderer;
 
     private float lookSensitivity = 2;
+    private float moveSpeed = 3;
+    private float gravity = -9;
 
     private Vector2 lookAbsolute;
     private Vector2 lookSmooth;
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         UpdateCameraLook();
+        UpdateCharacterMove();
+        UpdateCharacterGravity();
         UpdateCursorLock();
     }
 
@@ -47,10 +51,25 @@ public class PlayerController : MonoBehaviour
         lookSmooth.y = Mathf.Lerp(lookSmooth.y, lookDelta.y, 1f / 3);
         lookAbsolute += lookSmooth;
         lookCamera.transform.localRotation = Quaternion.AngleAxis(-lookAbsolute.y, targetLookOrientation * Vector3.right);
-        lookAbsolute.y = Mathf.Clamp(lookAbsolute.y, -180 * 0.5f, 180 * 0.5f);
+        lookAbsolute.y = Mathf.Clamp(lookAbsolute.y, -90, 90);
         lookCamera.transform.localRotation *= targetLookOrientation;
         transform.localRotation = Quaternion.AngleAxis(lookAbsolute.x, transform.up);
         transform.localRotation *= targetCharacterOrientation;
+    }
+
+    private void UpdateCharacterGravity()
+    {
+        if (!characterController.isGrounded)
+        {
+            characterController.Move(transform.up * gravity);
+        }
+    }
+
+    private void UpdateCharacterMove()
+    {
+        var moveInput = new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime, Input.GetAxis("Vertical") * Time.deltaTime) * moveSpeed;
+        var move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        characterController.Move(move);
     }
 
     private void UpdateCursorLock()

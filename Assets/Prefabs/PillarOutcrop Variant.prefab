@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4352973429250145706, guid: ceb3ea943ced57743bb6413f9ce6ab87, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3b38e4b07122d42b1a89a3370f1894, type: 3}
     - target: {fileID: 5404901423012376810, guid: ceb3ea943ced57743bb6413f9ce6ab87, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4295,6 +4299,10 @@ PrefabInstance:
       propertyPath: m_SelectedVertices.Array.data[103]
       value: 103
       objectReference: {fileID: 0}
+    - target: {fileID: 5404901423012376811, guid: ceb3ea943ced57743bb6413f9ce6ab87, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46bce1e97f9054b43b9698cafa434988, type: 2}
     - target: {fileID: 5404901423012376812, guid: ceb3ea943ced57743bb6413f9ce6ab87, type: 3}
       propertyPath: m_Mesh
       value: 

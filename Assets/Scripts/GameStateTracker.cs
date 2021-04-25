@@ -8,7 +8,7 @@ public class Collectable
 {
     public string name;
     public bool collected;
-    public Image image;
+    public CollectableImage image;
     public Sprite sprite;
 }
 
@@ -16,6 +16,7 @@ public class GameStateTracker : MonoBehaviour
 {
     public GameObject collectableUIFrame;
     public GameObject collectableUIPrefab;
+    public AudioSource collectAudioSource;
     public Collectable[] collectables;
 
 
@@ -28,11 +29,11 @@ public class GameStateTracker : MonoBehaviour
         foreach (Collectable c in collectables)
         {
             collectableDict.Add(c.name, c);
-            GameObject g = Instantiate<GameObject>(collectableUIFrame);
-            g.transform.parent = collectableUIFrame.transform;
-            c.image = g.GetComponent<Image>();
-            c.image.sprite = c.sprite;
-            c.image.color = Color.black;
+            GameObject g = Instantiate<GameObject>(collectableUIPrefab);
+            g.transform.SetParent(collectableUIFrame.transform);
+            c.image = g.GetComponent<CollectableImage>();
+            c.image.SetSprite(c.sprite);
+            c.image.SetColor(Color.black);
         }
     }
 
@@ -40,6 +41,7 @@ public class GameStateTracker : MonoBehaviour
     {
         Collectable c = collectableDict[name];
         c.collected = true;
-        c.image.color = Color.white;
+        c.image.SetColor(Color.white);
+        collectAudioSource.Play();
     }
 }

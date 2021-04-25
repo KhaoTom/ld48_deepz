@@ -8,6 +8,7 @@ TagManager:
   - InteractionTrigger
   - Interaction
   - Flyer
+  - Collectable
   layers:
   - Default
   - TransparentFX

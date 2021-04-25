@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 4;
     private float gravity = -9;
 
+    private float quitTimer = 0;
+
     private Vector2 lookAbsolute;
     private Vector2 lookSmooth;
     private Vector3 targetCharacterDirection;
@@ -105,12 +107,25 @@ public class PlayerController : MonoBehaviour
             // show interaction hint
 
             // handle input
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             {
                 followTransform = interactionTrigger.inTrigger[0].transform;
                 canMove = false;
 
                 interactionTrigger.inTrigger[0].SendMessageUpwards("DoInteraction");
+            }
+        }
+
+        quitTimer -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (quitTimer > 0)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                quitTimer = 3;
             }
         }
     }

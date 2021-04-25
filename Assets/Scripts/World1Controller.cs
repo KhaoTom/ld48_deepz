@@ -7,6 +7,6 @@ public class World1Controller : MonoBehaviour
 {
     public void LoadSkyLevel()
     {
-        SceneManager.LoadScene("World2");
+        Application.Quit();
     }
 }

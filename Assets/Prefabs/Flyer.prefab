@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1484312839298829111}
   - component: {fileID: 43133576299086710}
   - component: {fileID: 810994723090490827}
+  - component: {fileID: 7244246309389458286}
   m_Layer: 0
   m_Name: FlyerWingLeft
   m_TagString: Untagged
@@ -298,6 +299,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908271162673655355}
   m_Mesh: {fileID: 0}
+--- !u!114 &7244246309389458286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908271162673655355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe32fcef854daa44b7b5cc18e4a8361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 43133576299086710}
+  scrollspeed: {x: -0.2, y: 0}
 --- !u!1 &3583647543085054719
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +437,7 @@ GameObject:
   - component: {fileID: 5096259190914129832}
   - component: {fileID: 6796006313967840873}
   - component: {fileID: 5876051745160692907}
+  - component: {fileID: 2250024487201737511}
   m_Layer: 0
   m_Name: FlyerHead
   m_TagString: Untagged
@@ -1250,6 +1266,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4522208864063303892}
   m_Mesh: {fileID: 0}
+--- !u!114 &2250024487201737511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522208864063303892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe32fcef854daa44b7b5cc18e4a8361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6796006313967840873}
+  scrollspeed: {x: -0.6, y: -0.6}
 --- !u!1 &5982091855571543891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1415,10 @@ MonoBehaviour:
   rotationSpeed: 270
   nodes: []
   currentTargetId: -1
+  completed: 0
+  onCompletedPath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &4696880692318474312
 Animator:
   serializedVersion: 3
@@ -1528,6 +1562,7 @@ GameObject:
   - component: {fileID: 1983358666248614620}
   - component: {fileID: 4524441523231225363}
   - component: {fileID: 3343745809095933466}
+  - component: {fileID: 7761905924091994370}
   m_Layer: 0
   m_Name: FlyerWingRight
   m_TagString: Untagged
@@ -1814,3 +1849,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7405369321880199431}
   m_Mesh: {fileID: 0}
+--- !u!114 &7761905924091994370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405369321880199431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe32fcef854daa44b7b5cc18e4a8361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4524441523231225363}
+  scrollspeed: {x: -0.2, y: 0}

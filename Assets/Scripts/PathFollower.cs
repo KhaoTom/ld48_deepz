@@ -18,10 +18,16 @@ public class PathFollower : MonoBehaviour
         pathController = newController;
         // find all nodes in the path
         var nodeswithPaenrtUnityDum = new List<Transform>(pathController.GetComponentsInChildren<Transform>());
+        if (nodeswithPaenrtUnityDum == null)
+        {
+            Debug.LogError("We got no path nodes, yo.", this);
+            this.enabled = false;
+        }
+
         nodeswithPaenrtUnityDum.RemoveAt(0);
         nodes = nodeswithPaenrtUnityDum.ToArray();
 
-        if (nodes == null || nodes.Length == 0)
+        if(nodes == null || nodes.Length == 0)
         {
             Debug.LogError("We got no path nodes, yo.", this);
             this.enabled = false;
@@ -33,7 +39,8 @@ public class PathFollower : MonoBehaviour
 
     private void Start()
     {
-        SetPath(pathController);
+        if (pathController != null)
+            SetPath(pathController);
     }
 
     private int GetClosestPosition(Transform[] transforms, Vector3 from)
@@ -55,7 +62,7 @@ public class PathFollower : MonoBehaviour
 
     private void Update()
     {
-        if (completed) return;
+        if (completed || pathController == null) return;
 
         Vector3 target = nodes[currentTargetId].position;
 

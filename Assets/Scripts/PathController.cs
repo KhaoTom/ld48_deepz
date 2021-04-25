@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawPath : MonoBehaviour
+public class PathController : MonoBehaviour
 {
+    public bool isLooping = true;
+
     private void OnDrawGizmosSelected()
     {
 
@@ -27,7 +29,8 @@ public class DrawPath : MonoBehaviour
         {
             if (i == nodes.Length -1)
             {
-                Gizmos.DrawLine(nodes[i].position, nodes[0].position);
+                if (isLooping)
+                    Gizmos.DrawLine(nodes[i].position, nodes[0].position);
             }
             else
             {

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
-    public GameObject pathParent;
+    public PathController pathController;
     public float moveSpeed = 3;
     public float rotationSpeed = 180;
     public Transform[] nodes;
     public int currentTargetId = -1;
 
-    private void Start()
+    public void SetPath(PathController newController)
     {
+        pathController = newController;
         // find all nodes in the path
-        var nodeswithPaenrtUnityDum = new List<Transform>(pathParent.GetComponentsInChildren<Transform>());
+        var nodeswithPaenrtUnityDum = new List<Transform>(pathController.GetComponentsInChildren<Transform>());
         nodeswithPaenrtUnityDum.RemoveAt(0);
         nodes = nodeswithPaenrtUnityDum.ToArray();
 
@@ -25,6 +26,11 @@ public class PathFollower : MonoBehaviour
 
         // find the closest node to use as the first node
         currentTargetId = GetClosestPosition(nodes, transform.position);
+    }
+
+    private void Start()
+    {
+        SetPath(pathController);
     }
 
     private int GetClosestPosition(Transform[] transforms, Vector3 from)
@@ -46,6 +52,8 @@ public class PathFollower : MonoBehaviour
 
     private void Update()
     {
+        if (currentTargetId < 0) return;
+
         Vector3 target = nodes[currentTargetId].position;
 
         // move towards current target node
@@ -65,7 +73,10 @@ public class PathFollower : MonoBehaviour
             currentTargetId += 1;
             if (currentTargetId >= nodes.Length)
             {
-                currentTargetId = 0;
+                if (pathController.isLooping)
+                    currentTargetId = 0;
+                else
+                    currentTargetId = -1;
             }
         }
     }

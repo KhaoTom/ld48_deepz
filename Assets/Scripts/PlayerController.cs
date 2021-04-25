@@ -7,9 +7,13 @@ public class PlayerController : MonoBehaviour
     private Camera lookCamera;
     private CharacterController characterController;
     private MeshRenderer capsuleMeshRenderer;
+    private PlayerInteractionTrigger interactionTrigger;
+
+    private bool canMove = true;
+    private Transform followTransform;
 
     private float lookSensitivity = 2;
-    private float moveSpeed = 3;
+    private float moveSpeed = 4;
     private float gravity = -9;
 
     private Vector2 lookAbsolute;
@@ -22,6 +26,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         capsuleMeshRenderer = GetComponent<MeshRenderer>();
         lookCamera = GetComponentInChildren<Camera>();
+        interactionTrigger = GetComponentInChildren<PlayerInteractionTrigger>();
         capsuleMeshRenderer.enabled = false;
     }
 
@@ -30,7 +35,7 @@ public class PlayerController : MonoBehaviour
         targetDirection = lookCamera.transform.localRotation.eulerAngles;
         targetCharacterDirection = transform.localRotation.eulerAngles;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
         UpdateCameraLook();
         UpdateCharacterMove();
         UpdateCharacterGravity();
+        UpdateInteraction();
         UpdateCursorLock();
     }
 
@@ -67,6 +73,12 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCharacterMove()
     {
+        if (!canMove)
+        {
+            transform.position = followTransform.position - Vector3.up;
+            return;
+        }
+
         var moveInput = new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime, Input.GetAxis("Vertical") * Time.deltaTime) * moveSpeed;
         var move = transform.right * moveInput.x + transform.forward * moveInput.y;
         characterController.Move(move);
@@ -83,6 +95,23 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+    }
+
+    private void UpdateInteraction()
+    {
+        if (canMove && interactionTrigger.inTrigger.Count > 0)
+        {
+            // show interaction hint
+
+            // handle input
+            if (Input.GetButtonDown("Fire1"))
+            {
+                followTransform = interactionTrigger.inTrigger[0].transform;
+                canMove = false;
+
+                interactionTrigger.inTrigger[0].SendMessageUpwards("DoInteraction");
+            }
         }
     }
 }

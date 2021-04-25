@@ -19,6 +19,39 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-5952690277218399127
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1ccdb41c3100b214e86e597345e42690
+  m_EffectName: Attenuation
+  m_MixLevel: 44ee6668672718346a80227232d41ee4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-5345838690921892809
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cactoos
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 6707c40f09b99264f8651f318df1b1a0
+  m_Children: []
+  m_Volume: 2ed187779291597478d42c881c393895
+  m_Pitch: e6730aab7bf45fe45af0eecea24c0a8e
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -5952690277218399127}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-4285043857395958835
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -60,6 +93,7 @@ AudioMixerController:
     - 31b23bb88e989da43a31fb905183bb4d
     - e2163a39f45484a4ab75ac58bcf6b24d
     - 77a5fb3b74bfc8342910ca4052a8aee0
+    - 6707c40f09b99264f8651f318df1b1a0
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -75,6 +109,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -7047474950765315007}
   - {fileID: -4285043857395958835}
+  - {fileID: -5345838690921892809}
   m_Volume: 4183fe0269b34a8448dcfdcb403ad271
   m_Pitch: 557614befddf81d4f957c5f71ebe5af0
   m_Send: 00000000000000000000000000000000

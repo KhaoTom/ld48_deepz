@@ -2605,12 +2605,12 @@ AudioSource:
   m_GameObject: {fileID: 5012267293552946071}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5345838690921892809, guid: 19cde45bf6f40ab47b25dc5572b8f9ae, type: 2}
   m_audioClip: {fileID: 8300000, guid: eaa94201f4786974f95ecb487d3e383d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.9
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

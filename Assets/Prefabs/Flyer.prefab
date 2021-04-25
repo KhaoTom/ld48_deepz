@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathController: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 4
   rotationSpeed: 270
   nodes: []
   currentTargetId: -1

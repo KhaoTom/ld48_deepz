@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PathFollower : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PathFollower : MonoBehaviour
     public float rotationSpeed = 180;
     public Transform[] nodes;
     public int currentTargetId = -1;
+    public bool completed = false;
+    public UnityEvent onCompletedPath;
 
     public void SetPath(PathController newController)
     {
@@ -52,7 +55,7 @@ public class PathFollower : MonoBehaviour
 
     private void Update()
     {
-        if (currentTargetId < 0) return;
+        if (completed) return;
 
         Vector3 target = nodes[currentTargetId].position;
 
@@ -60,15 +63,19 @@ public class PathFollower : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 
         // rotate towards target node
-        
-        var lookat = Quaternion.LookRotation(target - transform.position);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookat, rotationSpeed * Time.deltaTime);
+
+        var direction = target - transform.position;
+        if (direction != Vector3.zero)
+        {
+            var lookat = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookat, rotationSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // if other is a path node then get the next node in path and set it as current target
-        if (this.enabled && other.CompareTag("PathNode"))
+        if (this.enabled && !completed && other.CompareTag("PathNode"))
         {
             currentTargetId += 1;
             if (currentTargetId >= nodes.Length)
@@ -76,7 +83,11 @@ public class PathFollower : MonoBehaviour
                 if (pathController.isLooping)
                     currentTargetId = 0;
                 else
+                {
                     currentTargetId = -1;
+                    completed = true;
+                    onCompletedPath.Invoke();
+                }
             }
         }
     }

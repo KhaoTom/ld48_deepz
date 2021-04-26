@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
         var targetLookOrientation = Quaternion.Euler(targetDirection);
         var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);
         var lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        if (lookDelta == Vector2.zero)
+        {
+            lookDelta = new Vector2(Input.GetAxis("LookHorizontal"), Input.GetAxis("LookVertical"));
+        }
         lookDelta = Vector2.Scale(lookDelta, new Vector2(lookSensitivity * 3, lookSensitivity * 3));
         lookSmooth.x = Mathf.Lerp(lookSmooth.x, lookDelta.x, 1f / 3);
         lookSmooth.y = Mathf.Lerp(lookSmooth.y, lookDelta.y, 1f / 3);
@@ -107,7 +111,7 @@ public class PlayerController : MonoBehaviour
             // show interaction hint
 
             // handle input
-            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2") || Input.GetButtonDown("Fire3") || Input.GetButtonDown("Jump"))
             {
                 followTransform = interactionTrigger.inTrigger[0].transform;
                 canMove = false;

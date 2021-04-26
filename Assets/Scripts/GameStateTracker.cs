@@ -18,6 +18,7 @@ public class GameStateTracker : MonoBehaviour
     public GameObject collectableUIPrefab;
     public AudioSource collectAudioSource;
     public Collectable[] collectables;
+    public GameObject flyer;
 
 
     private Dictionary<string, Collectable> collectableDict;
@@ -43,5 +44,20 @@ public class GameStateTracker : MonoBehaviour
         c.collected = true;
         c.image.SetColor(Color.white);
         collectAudioSource.Play();
+
+        if (AllCompleted())
+        {
+            flyer.SetActive(true);
+        }
+    }
+
+    private bool AllCompleted()
+    {
+        int count = 0;
+        foreach (Collectable c in collectables)
+        {
+            count += c.collected ? 1 : 0;
+        }
+        return count == collectables.Length;
     }
 }

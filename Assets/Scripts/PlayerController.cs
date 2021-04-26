@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                quitTimer = 3;
+                quitTimer = 1;
             }
         }
     }
